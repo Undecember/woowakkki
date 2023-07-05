@@ -31,13 +31,17 @@ browser.get('https://cafe.naver.com/steamindiegame')
 time.sleep(5)
 while True:
     while True:
-        post_number = random.randint(9700000, 9900000)
+        post_number = random.randint(10000000, 11900000)
         post_url = f'https://cafe.naver.com/steamindiegame/{post_number}'
+        print(f'opening post number {post_number}...')
         browser.get(post_url)
         time.sleep(5)
-        browser.save_screenshot('cim.png')
-        try: browser.switch_to.alert.accept()
-        except NoAlertPresentException: break
-        except UnexpectedAlertPresentException: continue;
-        else: continue
+        try:
+            browser.save_screenshot('cim.png')
+            print(f'opened post saved in cim.png')
+            break
+        except:
+            print(f'failed opening. retrying...')
+            continue
+    print(f'sleep...')
     time.sleep(30 * 60 + 5)
