@@ -3,15 +3,22 @@ password = input('Enter password : ').replace('\n', '')
 
 import os, random, time
 from selenium import webdriver
-from selenium.common.exceptions import NoAlertPresentException, UnexpectedAlertPresentException
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
+from selenium.common.exceptions import NoAlertPresentException, UnexpectedAlertPresentException
 options = webdriver.ChromeOptions()
-options.add_argument('--headless')
+# options.add_argument('--headless')
 options.add_argument('--start-maximized')
 options.add_argument('--disable-dev-shm-usage')
 options.add_argument('--no-sandbox')
-browser = webdriver.Chrome(options=options)
+
+service = Service('./chromedriver')
+env.clients[i].browser = webdriver.Chrome(service = service, options = options)
+browser = env.clients[i].browser
+browser.implicitly_wait(0)
 browser.set_window_size(1920, 1080)
+
 browser.get('https://nid.naver.com/nidlogin.login')
 browser.find_element(By.NAME, 'id').send_keys(username)
 browser.find_element(By.NAME, 'pw').send_keys(password)
