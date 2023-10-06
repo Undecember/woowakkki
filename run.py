@@ -8,14 +8,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from selenium.common.exceptions import NoAlertPresentException, UnexpectedAlertPresentException
 options = webdriver.ChromeOptions()
-# options.add_argument('--headless')
+options.add_argument('--headless')
 options.add_argument('--start-maximized')
 options.add_argument('--disable-dev-shm-usage')
 options.add_argument('--no-sandbox')
 
 service = Service('./chromedriver')
-env.clients[i].browser = webdriver.Chrome(service = service, options = options)
-browser = env.clients[i].browser
+browser = webdriver.Chrome(service = service, options = options)
 browser.implicitly_wait(0)
 browser.set_window_size(1920, 1080)
 
