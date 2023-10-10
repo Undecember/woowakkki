@@ -37,5 +37,6 @@ while True:
         except:
             print(f'failed opening. retrying...')
             continue
-    print(f'sleep...')
-    time.sleep(option.parseOption())
+    d = option.parseOption()
+    print(f'sleep for {d} secs...')
+    time.sleep(d)
