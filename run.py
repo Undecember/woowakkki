@@ -1,7 +1,7 @@
 username = input('Enter username : ').replace('\n', '')
 password = input('Enter password : ').replace('\n', '')
 
-import os, random, time
+import os, random, time, option
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
@@ -51,4 +51,4 @@ while True:
             print(f'failed opening. retrying...')
             continue
     print(f'sleep...')
-    time.sleep(30 * 60 + 5)
+    time.sleep(option.parseOption())
